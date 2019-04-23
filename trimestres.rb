@@ -12,14 +12,8 @@ ventas = {
   Noviembre: 91000,
   Diciembre: 21000
 }
-def filter(hash)
-  filtered_hash = {}
-  hash.each do |k,v|
-    if v > ARGV[0].to_i
-      filtered_hash[k] = v
-    end
-  end
-  return filtered_hash
+quarters = {}
+ventas.values.each_slice(3).each_with_index do |e, i|
+  quarters["Q#{i+1}"] = e.sum
 end
-
-puts filter(ventas)
+print quarters

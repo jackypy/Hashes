@@ -12,14 +12,9 @@ ventas = {
   Noviembre: 91000,
   Diciembre: 21000
 }
-def filter(hash)
-  filtered_hash = {}
-  hash.each do |k,v|
-    if v > ARGV[0].to_i
-      filtered_hash[k] = v
-    end
+  ventas = ventas.invert
+  puts ventas
+  ARGV.each do |a|
+    match = ventas[a.to_i]
+  puts match ? match : "no encontado"
   end
-  return filtered_hash
-end
-
-puts filter(ventas)
